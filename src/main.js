@@ -1,34 +1,51 @@
-var Vue = require("vue");
-var fastclick = require("fastclick");
-var Router = require("vue-router");
+//引入全局样式文件
+require("./assets/css/normalize.css");
+require("./assets/css/layout.css");
+
 var App = require("./components/App.vue");
-var Index = require("./components/Index.vue");
+var $ = require("jquery");
+var fastclick = require("fastclick");
+
+$(function() {
+	// 使用fastclick
+	fastclick.attach(document.body);
+});
 
 
-//install router
-Vue.use(Router);
+//初始化应用路由
+require.ensure(["vue", "vue-router"], function(require) {
+	var Vue = require("vue");
+	var Router = require("vue-router");
+
+	//install router
+	Vue.use(Router);
 
 
-var router = new Router();
+	var router = new Router();
 
-router.map({
-	'/mvc/': {
-		component: Index
-	},
-	'/mvc/list': {
-		component: function(resolve) {
-			require(['./components/List.vue'], resolve);
+	router.map({
+		'/mvc/': {
+			component: function(resolve){
+				require(['./components/Index.vue'],resolve);
+			}
+		},
+		'/mvc/list': {
+			component: function(resolve) {
+				require(['./components/List.vue'], resolve);
+			}
 		}
-	}
-})
+	})
 
 
-router.beforeEach(function() {
-	window.scrollTo(0, 0);
+	router.beforeEach(function() {
+		window.scrollTo(0, 0);
+	});
+
+	//404页面
+	router.redirect({
+		'*': '/404'
+	});
+
+	router.start(App, '#app');
+
 });
-
-router.redirect({
-	'*': '/404'
-});
-
-router.start(App, '#app');

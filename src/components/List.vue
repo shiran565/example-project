@@ -6,6 +6,6 @@
 	<li>list3</li>
 </ul>
 
-<img src="../assets/banner.jpg" />
+<img src="../assets/images/banner.jpg" />
 
 </template>

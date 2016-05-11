@@ -6,40 +6,38 @@
 
 	<script type="text/javascript">
 		
-	(function () {
-	    var doc = document;
-	    var docEl = doc.documentElement;
-	    var metaEl = doc.createElement('meta');
-	    //避免1440设备线条太细看不清，修复缩放过度导致文本末尾会被遮盖的bug
-	    var dpr = devicePixelRatio>3?2:devicePixelRatio;
-	    var scale = 1 / dpr;
-	    var deviceWidth = document.documentElement.clientWidth;
-	    metaEl.setAttribute('name', 'viewport');
-	    metaEl.setAttribute('content', 'width=device-width,initial-scale='+scale+', maximum-scale='+scale+', minimum-scale='+scale+', user-scalable=yes');
-	    if (docEl.firstElementChild) {
-	        document.documentElement.firstElementChild.appendChild(metaEl);
-	    } else {
-	        var wrap = doc.createElement('div');
-	        wrap.appendChild(metaEl);
-	        document.write(wrap.innerHTML);
-	    }
+		(function () {
+		    var doc = document;
+		    var docEl = doc.documentElement;
+		    var metaEl = doc.createElement('meta');
+		    //避免1440设备线条太细看不清，修复缩放过度导致文本末尾会被遮盖的bug
+		    var dpr = devicePixelRatio>3?2:devicePixelRatio;
+		    var scale = 1 / dpr;
+		    var deviceWidth = document.documentElement.clientWidth;
+		    metaEl.setAttribute('name', 'viewport');
+		    metaEl.setAttribute('content', 'width=device-width,initial-scale='+scale+', maximum-scale='+scale+', minimum-scale='+scale+', user-scalable=yes');
+		    if (docEl.firstElementChild) {
+		        document.documentElement.firstElementChild.appendChild(metaEl);
+		    } else {
+		        var wrap = doc.createElement('div');
+		        wrap.appendChild(metaEl);
+		        document.write(wrap.innerHTML);
+		    }
 
-	    if(deviceWidth == document.documentElement.clientWidth){
-	        dpr = 1;
-	    }
+		    if(deviceWidth == document.documentElement.clientWidth){
+		        dpr = 1;
+		    }
 
-	    document.documentElement.style.fontSize = document.documentElement.clientWidth / 10.8 + 'px';
+		    document.documentElement.style.fontSize = document.documentElement.clientWidth / 10.8 + 'px';
 
-	}());
+		}());
 	
 	</script>
-
-
-
 
   </head>
   <body>
     <div id="app"></div>
+    <script src="static/vendor.bundle.js"></script>
     <script src="static/main.js"></script>
   </body>
 </html>

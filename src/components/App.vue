@@ -1,28 +1,41 @@
 <template>
-	<div id="wrapper">
-		<div id="header"><h1>Header</h1></div>
+	<div id="message">
+	  {{ message }}
 	</div>
 
 	<router-view 
 		class="view"
 		keep-alive
-		transition
-		transition-mod="out-in">	
+		transition="fade"
+		transition-mode="out-in">
 	</router-view>
 
 </template>
 
+<script>
+
+	module.exports = {
+		el: function() {
+			return '#message';
+		},
+		data: function() {
+			return {
+				message: 'Hello Vue.js!'
+			}
+		}
+	}
+
+
+</script>
+
 <style>
-html,body{
-  font-family:Verdana;
-  font-size:13px;
-  height:100%;	
+
+.fade-transition {
+  transition: opacity .3s ease;
 }
 
-body{
-	width: 10.8rem;
-	margin: 0 auto;
-	overflow-x:hidden; 
+.fade-enter, .fade-leave {
+  opacity: 0;
 }
 
 </style>

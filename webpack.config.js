@@ -1,7 +1,11 @@
 var webpack = require('webpack')
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
-  entry: './src/main.js',
+  entry:{
+    app:"./src/main.js",
+    vendor: ["jquery","fastclick"]
+  },
   output: {
     path: './static',
     publicPath: '/static/',
@@ -10,7 +14,11 @@ module.exports = {
   module: {
     // avoid webpack trying to shim process
     noParse: /es6-promise\.js$/,
-    loaders: [
+    loaders: [ 
+      {
+        test:/\.css$/,
+        loader: ExtractTextPlugin.extract("style-loader", "css-loader")
+      },
       {
         test: /\.vue$/,
         loader: 'vue'
@@ -30,11 +38,15 @@ module.exports = {
           // inline files smaller then 10kb as base64 dataURL
           limit: 10000,
           // fallback to file-loader with this naming scheme
-          name: 'images/[name]_[hash:8].[ext]'
+          name: '[name]_[hash:8].[ext]'
         }
       }
     ]
-  },
+  },  
+  plugins: [
+    new webpack.optimize.CommonsChunkPlugin(/* chunkName= */["vendor"], /* filename= */"[name].bundle.js"),
+    new ExtractTextPlugin("[name]_[hash:8].css")
+  ],
   babel: {
     presets: ['es2015'],
     plugins: ['transform-runtime']
