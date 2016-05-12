@@ -44,8 +44,15 @@ module.exports = {
     ]
   },  
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin(/* chunkName= */["vendor"], /* filename= */"[name].bundle.js"),
-    new ExtractTextPlugin("[name]_[hash:8].css")
+    new webpack.optimize.CommonsChunkPlugin({
+      children: true,
+      // (use all children of the chunk)
+
+      async: true
+      //name:"vendor",
+      //filename:"vendor.bundle.js"
+    }),
+    new ExtractTextPlugin("[name].css")
   ],
   babel: {
     presets: ['es2015'],

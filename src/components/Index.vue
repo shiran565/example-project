@@ -7,7 +7,7 @@
 				<div><img src="../assets/images/banner-1.jpg" alt=""></div>
 			</div>
 		</div>
-		<!--µ×²¿¹¤¾ßÌõ×é¼þ-->
+		<!--å·¥å…·æ¡-->
 		<page-footer></page-footer>		
 	</div>
 </template>

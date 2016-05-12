@@ -6,6 +6,8 @@ var App = require("./components/App.vue");
 var $ = require("jquery");
 var fastclick = require("fastclick");
 
+require("./assets/js/common/index.js")
+
 $(function() {
 	// 使用fastclick
 	fastclick.attach(document.body);
@@ -24,12 +26,12 @@ require.ensure(["vue", "vue-router"], function(require) {
 	var router = new Router();
 
 	router.map({
-		'/mvc/': {
+		'/': {
 			component: function(resolve){
 				require(['./components/Index.vue'],resolve);
 			}
 		},
-		'/mvc/list': {
+		'/list': {
 			component: function(resolve) {
 				require(['./components/List.vue'], resolve);
 			}

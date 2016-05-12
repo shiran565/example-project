@@ -6,7 +6,7 @@
 			<li>分类三</li>
 			<li>分类四</li>
 		</ul>
-	<footer>
+	</footer>
 </template>
 
 
