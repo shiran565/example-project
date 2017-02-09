@@ -1,14 +1,15 @@
 html{	
     font-family: Verdana;
+    font-size: 50px;
 }
 
 
 body{
-	width: 10.8rem;
+	width: 14.4rem;
 	margin: 0 auto;
 	overflow-x: hidden;
 }
 
 .layout{
-	font-size: 28px;
+	font-size: .56rem;
 }
